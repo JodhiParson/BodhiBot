@@ -10,7 +10,7 @@ class NotificationCog(commands.Cog):
     async def on_ready(self):
         print("NotificationCog.py is ready!")
 
-    @commands.command()
+    @commands.command(aliases=["set_channel","setchannel","channelset","channel_set"])
     async def set_notification_channel(self, ctx, *, channel_name=None):
         if channel_name is None:
             # If no channel name is provided, set the notifying Discord channel to the current channel
