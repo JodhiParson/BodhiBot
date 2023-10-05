@@ -1,0 +1,7 @@
+{
+    "channel_id_": {
+        "channel_name": "channel_name_placeholder",
+        "latest_video_url": "latest_video_url_placeholder",
+        "notifying_discord_channel": "notifying_discord_channel_placeholder"
+    }
+}
