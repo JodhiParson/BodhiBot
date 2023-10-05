@@ -1,4 +1,5 @@
 import json
+import re
 from discord.ext import commands
 
 class SubscriptionCog(commands.Cog):
@@ -27,7 +28,22 @@ class SubscriptionCog(commands.Cog):
                 return True
 
         return False
-    @commands.command()
+    
+    @commands.command(aliases=["channellist","channels","list",""])
+    async def listchannels(self, ctx):
+        # Load data from the JSON file
+        with open("youtubedata.json", "r") as f:
+            data = json.load(f)
+
+        # Create a formatted message
+        message = "List of subscribed channels:\n"
+        for channel_id, channel_data in data.items():
+            message += f"{channel_data['channel_name']}\n"
+
+        # Send the message to the Discord channel
+        await ctx.send(message)
+        
+    @commands.command(aliases=["follow"])
     async def subscribe(self, ctx, channel_id, *, channel_name):
         # Check if the channel is already subscribed
         with open("youtubedata.json", "r") as f:
@@ -40,7 +56,7 @@ class SubscriptionCog(commands.Cog):
             self.add_channel(channel_id, channel_name, ctx.channel.id)
             await ctx.send(f"Subscribed to the channel with ID: {channel_id} and name: {channel_name}")
 
-    @commands.command()
+    @commands.command(aliases=["unfollow"])
     async def unsubscribe(self, ctx, *, channel_name):
         # Attempt to remove the channel
         removed = self.remove_channel(channel_name)
