@@ -6,11 +6,9 @@ import requests
 import re
 import random
 import asyncio
-
 from discord.ext import commands, tasks
-
-from dotenv import load_dotenv
-
+from dotenv import load_dotenv, dotenv_values
+load_dotenv()
 
 intents = discord.Intents.all()
 intents.message_content = True
@@ -38,7 +36,7 @@ async def load():
 async def main():
   async with bot:
     await load()
-    await bot.start('YOUR_TOKEN_HERE')
+    await bot.start(os.getenv("DISCORD_TOKEN")) #use os.getenv to get the token from the environment variable
 
 @tasks.loop(seconds=86400)
 async def change_status():
