@@ -38,7 +38,7 @@ async def load():
 async def main():
   async with bot:
     await load()
-    await bot.start('MTE1ODUwMTUzODAzNDExMDU0Nw.GG6AYf.5HKMddz9YgrdooDI5MwUWEBa6jT911RCIVYgQ4')
+    await bot.start('YOUR_TOKEN_HERE')
 
 @tasks.loop(seconds=86400)
 async def change_status():
@@ -108,4 +108,3 @@ async def checkforvideos():
 
 #run client
 asyncio.run(main())
-#bot.run('MTE1ODUwMTUzODAzNDExMDU0Nw.GdPdXe.uQmRZcj9KN7CbuX3e0SlxvCCd0CeE6_Vk3uM7Y')
