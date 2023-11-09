@@ -15,7 +15,7 @@ class Embed(commands.Cog):
     async def on_ready(self):
         print("Embed.py is ready!")
     
-    @commands.command() #.command
+    @commands.command(aliases=["channels","list"]) #.command
     async def embed(self, ctx): # note: self goes first before any other parameter
         # Load data from the JSON file
         with open("youtubedata.json", "r") as f:
@@ -52,5 +52,9 @@ class Embed(commands.Cog):
                 return data['items'][0]['snippet']['thumbnails']['default']['url']
         return "No Image Found"  # Default image if the profile picture is not available
         
+    @commands.command()
+    async def info(self, ctx):
+        await ctx.send("hi")
+            
 async def setup(bot):
     await bot.add_cog(Embed(bot))
