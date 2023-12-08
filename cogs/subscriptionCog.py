@@ -29,7 +29,7 @@ class SubscriptionCog(commands.Cog):
 
         return False
     
-    @commands.command(aliases=["channellist","channels","list",""])
+    @commands.command(aliases=["channellist"])
     async def listchannels(self, ctx):
         # Load data from the JSON file
         with open("youtubedata.json", "r") as f:
