@@ -56,6 +56,7 @@ async def on_message(message):
 
     if message.content.startswith("https://x.com/"):
         vxtwitter = message.content.replace("x.com","vxtwitter.com")
+        await message.delete()
         await message.channel.send(vxtwitter)
 #checking for vidoes every 30 seconds
 #you can check for vidoes every 10 seconds also but i would prefer to keep 30 seconds

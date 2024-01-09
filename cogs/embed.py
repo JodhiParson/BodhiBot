@@ -21,22 +21,22 @@ class Embed(commands.Cog):
         with open("youtubedata.json", "r") as f:
             data = json.load(f)
             
-        embed_message = discord.Embed(title="Subscribed Channels", color=discord.Color.red())
+        em = discord.Embed(title="Subscribed Channels", color=discord.Color.red())
         
-        embed_message.set_author(name=f"Requested by @{ctx.author.display_name}", icon_url =ctx.author.avatar)
-        embed_message.set_thumbnail(url=ctx.author.avatar)
-        #embed_message.set_image(url=ctx.guild.icon)
+        em.set_author(name=f"Requested by @{ctx.author.display_name}", icon_url =ctx.author.avatar)
+        em.set_thumbnail(url=ctx.author.avatar)
+        #em.set_image(url=ctx.guild.icon)
         for channel_id, channel_data in data.items():
             profile_picture_url = self.get_channel_profile_picture(channel_id)
-            embed_message.add_field(
+            em.add_field(
                 name=channel_data['channel_name'],
                 value=f"Channel ID: {channel_id}",
                 inline=False
             )
-        embed_message.set_thumbnail(url=profile_picture_url)
-        embed_message.set_footer(text=f"@{ctx.author.display_name}", icon_url=ctx.author.avatar)
+        em.set_thumbnail(url=profile_picture_url)
+        em.set_footer(text=f"@{ctx.author.display_name}", icon_url=ctx.author.avatar)
         
-        await ctx.send(embed = embed_message)
+        await ctx.send(embed = em)
         
     def get_channel_profile_picture(self, channel_id):
         # Use your YouTube Data API key here
@@ -52,9 +52,6 @@ class Embed(commands.Cog):
                 return data['items'][0]['snippet']['thumbnails']['default']['url']
         return "No Image Found"  # Default image if the profile picture is not available
         
-    @commands.command()
-    async def info(self, ctx):
-        await ctx.send("hi")
             
 async def setup(bot):
     await bot.add_cog(Embed(bot))
