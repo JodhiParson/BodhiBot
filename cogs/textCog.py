@@ -13,18 +13,18 @@ class TextCog(commands.Cog):
     @commands.command()
     #shrug
     async def shrug(self, ctx):
-        
+        await ctx.message.delete()
         await ctx.send(f"¯\_(ツ)_/¯")
         
     @commands.command()
     #tableflip
     async def tableflip(self, ctx):
-        
+        await ctx.message.delete()
         await ctx.send(f"(╯°□°）╯︵ ┻━┻")
     
     @commands.command() #.command
     async def unflip(self, ctx): # note: self goes first before any other parameter
-        
+        await ctx.message.delete()
         await ctx.send(f"┬─┬ ノ( ゜-゜ノ)")
         
     
