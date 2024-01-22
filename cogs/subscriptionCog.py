@@ -117,5 +117,20 @@ class SubscriptionCog(commands.Cog):
                 return
 
         await ctx.send(f"Channel '{channel_name}' not found in your subscriptions.")
+    
+    # @commands.command(aliases=["lastVideo", "LastVideo"])
+    # async def checkVideos(self, ctx, channel_name):
+    #     # Load existing data from the JSON file
+    #     with open("youtubedata.json", "r") as f:
+    #         data = json.load(f)
+    #      # Check if the channel with the given name exists
+    #     for channel_id, channel_data in data.items():
+    #         if channel_data["channel_name"].lower() == channel_name.lower():
+                
+    #     videoMsg = f"{data[str(youtube_channel)]['channel_name']} Just Uploaded A Video! : {latest_video_url}"
+    #   #if you'll send the url discord will automaitacly create embed for it
+    #   #if you don't want to send embed for it then do <{latest_video_url}>
+
+    #     await discord_channel.send(videoMsg)
 async def setup(bot):
     await bot.add_cog(SubscriptionCog(bot))

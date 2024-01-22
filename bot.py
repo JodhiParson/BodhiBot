@@ -96,7 +96,7 @@ async def checkforvideos():
 
       #getting the channel to send the message
         discord_channel_id = data[str(youtube_channel)]['notifying_discord_channel']
-        discord_channel = bot.get_channel(int(discord_channel_id))
+        discord_channel = bot.get_channel(int(discord_channel_id)) #NEEDS EDITING TO BE DEFAULT NOTIFYING DISCORD CHANNEL
 
       #sending the msg in discord channel
       #you can mention any role like this if you want
